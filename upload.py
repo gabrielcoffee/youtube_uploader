@@ -70,3 +70,5 @@ def upload_multiple_videos(youtube, video_paths, is_title_filename ,title, descr
             tags=tags,
             privacy_status=privacy_status
         )
+
+        print(text=f"{i+1}/{len(video_names)} vídeos publicados")
