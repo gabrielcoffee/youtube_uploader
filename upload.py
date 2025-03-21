@@ -45,11 +45,11 @@ def upload_video(youtube, video_file_path, title, description, tags, privacy_sta
         except FileNotFoundError:
             wb = Workbook()
             ws = wb.active
-            ws.append(["Video URLs"])  # Add a header row
+            ws.append(["Titulo do Video", "Video URL"])  # Add a header row
 
         # Append the new URL
         url = f"https://www.youtube.com/watch?v={response['id']}"
-        ws.append([url])
+        ws.append([title, url])
 
         # Save the workbook
         wb.save(file_name)
@@ -57,18 +57,21 @@ def upload_video(youtube, video_file_path, title, description, tags, privacy_sta
         print(f"Video {title} Uploaded, URL: https://www.youtube.com/watch?v={response['id']}")
 
 
-def upload_multiple_videos(youtube, video_paths, is_title_filename ,title, description, tags, privacy_status):
-    
-    video_names = [os.path.basename(video) for video in video_paths]
+def upload_multiple_videos(youtube, video_paths, is_title_filename, title, description, tags, privacy_status):
+    # remove base path and extension from titles and leave only the file name
+    video_names = [os.path.splitext(os.path.basename(video_path))[0] for video_path in video_paths]
 
     for i, video in enumerate(video_names):
-        upload_video(
+        video_title = video if is_title_filename else title + f" {i+1}"
+        if upload_video(
             youtube,
             video_file_path=video_paths[i],
-            title=video if is_title_filename else title + f" {i+1}",
+            title=video_title,
             description=description,
             tags=tags,
             privacy_status=privacy_status
-        )
-
-        print(text=f"{i+1}/{len(video_names)} vídeos publicados")
+        ):
+            print(f"{i+1}/{len(video_names)} vídeos publicados")
+        else:
+            print(f"Falha {i+1}/{len(video_names)} due to quota limits.")
+            break
