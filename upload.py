@@ -33,7 +33,7 @@ def upload_video(youtube, video_file_path, title, description, tags, privacy_sta
     while response is None:
         status, response = request.next_chunk()
         if status:
-            print(f"Uploading {int(status.progress() * 100)}%")
+            print(f"Publicando {int(status.progress() * 100)}%")
         
         # Define the file name
         file_name = "video_urls.xlsx"
@@ -54,7 +54,7 @@ def upload_video(youtube, video_file_path, title, description, tags, privacy_sta
         # Save the workbook
         wb.save(file_name)
 
-        print(f"Video {title} Uploaded, URL: https://www.youtube.com/watch?v={response['id']}")
+        print(f"Video {title} Publicado, URL: https://www.youtube.com/watch?v={response['id']}")
 
 
 def upload_multiple_videos(youtube, video_paths, is_title_filename, title, description, tags, privacy_status):
@@ -73,5 +73,5 @@ def upload_multiple_videos(youtube, video_paths, is_title_filename, title, descr
         ):
             print(f"{i+1}/{len(video_names)} vídeos publicados")
         else:
-            print(f"Falha {i+1}/{len(video_names)} due to quota limits.")
+            print(f"Falha {i+1}/{len(video_names)} por limites de quota.")
             break

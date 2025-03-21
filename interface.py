@@ -65,14 +65,14 @@ def create_first_page():
     logo_label.pack(pady=(15, 5))  # Add space above and below the logo
 
     # create a button to upload the client.json file
-    upload_client_json_button = tk.Button(first_page, text="Upload client.json", command=upload_client_json, width=20, height=2)
+    upload_client_json_button = tk.Button(first_page, text="Selecione o client.json", command=upload_client_json, width=20, height=2)
     upload_client_json_button.pack(pady=1)
     global client_json_label
     client_json_label = tk.Label(first_page, text="Nenhum arquivo selecionado")
     client_json_label.pack(pady=1)
 
     # create a button to upload videos
-    upload_videos_button = tk.Button(first_page, text="Upload vídeos", command=upload_videos, width=20, height=2)
+    upload_videos_button = tk.Button(first_page, text="Selecione os vídeos", command=upload_videos, width=20, height=2)
     upload_videos_button.pack(pady=1)
     global videos_label
     videos_label = tk.Label(first_page, text="Nenhum vídeo selecionado")
