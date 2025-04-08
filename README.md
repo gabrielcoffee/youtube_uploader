@@ -1,4 +1,4 @@
-# Youtube Automatic Uploader
+# Youtube Auto Uploader
 
 An automatic YouTube uploader that allows you to upload videos with just one click. Generate your client_secret.json on the Google Developer Console, select your videos, and upload them effortlessly.
 
