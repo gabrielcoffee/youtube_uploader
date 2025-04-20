@@ -86,7 +86,7 @@ def create_first_page():
     global title_description
     title_description = tk.StringVar()
     title_description.set("title_default")
-    title_description.trace('w', update_title_entry)
+    title_description.trace_add('write', update_title_entry)
 
     radio_button1 = tk.Radiobutton(first_page, text="Título padrão (com numeração)", variable=title_description, value="title_default")
     radio_button1.pack(pady=1)
