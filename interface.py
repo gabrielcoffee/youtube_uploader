@@ -17,7 +17,7 @@ def upload_client_json():
 
 def upload_videos():
     global video_paths
-    video_paths = filedialog.askopenfilenames(filetypes=[("Video files", "*.mp4")])
+    video_paths = filedialog.askopenfilenames(filetypes=[("Video files", "*.mp4 *.mov *.avi *.mkv *.3gp")])
     if video_paths:
         videos_label.config(text=f"{len(video_paths)} vídeos selecionados")
     else:
