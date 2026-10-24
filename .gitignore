@@ -1,1 +1,14 @@
 video_urls.xlsx
+
+# OAuth client and tokens
+client.json
+client_secret*.json
+token*.json
+token.pickle
+
+__pycache__/
+*.pyc
+build/
+dist/
+.venv/
+.DS_Store
